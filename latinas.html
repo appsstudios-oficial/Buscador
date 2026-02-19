@@ -1,42 +1,38 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscador M3U - AppsStudios</title>
     <style>
-        body { background-color: #000000; color: #ffffff; font-family: sans-serif; text-align: center; padding: 20px; }
-        .boton-ads { background-color: #00FFFF; color: #000; padding: 20px; border-radius: 50px; font-weight: bold; cursor: pointer; border: none; width: 90%; max-width: 400px; }
-        .paso2 { display: none; margin-top: 30px; padding: 20px; border: 2px solid #00FF00; border-radius: 15px; }
-        .boton-final { background-color: #00FF00; color: #000; padding: 15px; text-decoration: none; display: inline-block; border-radius: 10px; font-weight: bold; margin-top: 20px; }
+        body { background-color: #000; color: #fff; text-align: center; font-family: sans-serif; padding-top: 50px; }
+        .paso { margin: 20px; padding: 20px; border: 1px solid #333; border-radius: 10px; }
+        .btn-ads { background: #FF8C00; color: #fff; padding: 15px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; width: 80%; }
+        .btn-lista { background: #00FFFF; color: #000; padding: 15px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; width: 80%; display: none; }
     </style>
 </head>
 <body>
 
     <h1>Buscador M3U</h1>
 
-    <div id="paso1">
-        <p>AppsStudios - Presiona para desbloquear el servidor</p>
-        <button class="boton-ads" onclick="abrirTodo()">1. DESBLOQUEAR LISTA (ADS)</button>
+    <div class="paso">
+        <p>1. Primero desbloquea el servidor:</p>
+        <button class="btn-ads" onclick="abrirAds()">DESBLOQUEAR (PUBLICIDAD)</button>
     </div>
 
-    <div id="paso2" class="pasos">
-        <p>✅ ¡Publicidad abierta en otra pestaña!</p>
-        <p>Ya podés acceder a tu contenido:</p>
-        <a href="https://appsstudios-oficial.github.io/Buscador/lista1" class="boton-final">2. IR A LA LISTA AHORA</a>
-        <p style="font-size: 12px; color: #666; margin-top: 20px;">Si no se abrió el anuncio, vuelve a intentarlo.</p>
+    <div id="contenedorLista" class="paso" style="display:none;">
+        <p>2. ¡Servidor desbloqueado!</p>
+        <button class="btn-lista" style="display:block;" onclick="irALista()">VER LISTA ARGENTINA</button>
     </div>
 
     <script>
-        function abrirTodo() {
-            const linkAdsterra = "https://www.effectivegatecpm.com/vqawq29zk?key=af2c03441e06190b0f3c6f9eab1bf0c4";
+        function abrirAds() {
+            // Abrimos la publicidad en una pestaña nueva
+            window.open("https://www.effectivegatecpm.com/vqawq29zk?key=af2c03441e06190b0f3c6f9eab1bf0c4", "_blank");
             
-            // 1. Abrimos el anuncio en pestaña nueva (Esto genera tus ingresos)
-            window.open(linkAdsterra, '_blank');
+            // Al tocar el botón, aparece el segundo botón para ir a la lista
+            document.getElementById('contenedorLista').style.display = 'block';
+        }
 
-            // 2. Ocultamos el botón viejo y mostramos el de "IR A LA LISTA"
-            document.getElementById('paso1').style.display = 'none';
-            document.getElementById('paso2').style.display = 'block';
+        function irALista() {
+            window.location.href = "https://appsstudios-oficial.github.io/Buscador/lista1";
         }
     </script>
 </body>
