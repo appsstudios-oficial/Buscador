@@ -38,26 +38,24 @@
     </div>
 
     <script>
-        function ejecutarAccion() {
-            const directLink = "https://omg10.com/4/10626688";
-            const destinoFinal = "https://appsstudios-oficial.github.io/Buscador/lista1";
-            const boton = document.getElementById('miBoton');
-            const mensaje = document.getElementById('mensaje');
+    function ejecutarAccion() {
+        const directLink = "https://omg10.com/4/10626688";
+        const destinoFinal = "https://appsstudios-oficial.github.io/Buscador/lista1";
+        const boton = document.getElementById('miBoton');
 
-            // 1. Mostrar mensaje de carga
-            boton.innerText = "PROCESANDO...";
-            boton.style.backgroundColor = "#555";
-            mensaje.style.display = 'block';
+        // Cambiamos el texto para que el usuario sepa que está cargando
+        boton.innerText = "CARGANDO LISTA...";
+        boton.style.backgroundColor = "#FF8C00";
 
-            // 2. Abrir publicidad en una pestaña nueva para generar ingresos
-            window.open(directLink, '_blank');
+        // Usamos un pequeño truco: abrimos el anuncio en la pestaña actual
+        // Esto asegura que Monetag cuente la visita sí o sí
+        window.location.href = directLink;
 
-            // 3. Redirigir la pestaña actual al destino final después de 2 segundos
-            // Esto asegura que el anuncio se dispare antes del cambio de página
-            setTimeout(() => {
-                window.location.href = destinoFinal;
-            }, 2000); 
-        }
-    </script>
+        // NOTA: Para que el usuario llegue a 'lista1', deberá darle 
+        // al botón "Atrás" de su celular tras ver el anuncio, 
+        // o puedes configurar el anuncio para que redirija solo si Monetag lo permite.
+    }
+</script>
 </body>
 </html>
+
