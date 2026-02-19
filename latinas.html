@@ -39,26 +39,21 @@
     </div>
 
     <script>
-        function generarAcceso() {
-            // Tu Smart Link de Adsterra para cobrar
-            const publicidad = "https://www.effectivegatecpm.com/vqawq29zk?key=af2c03441e06190b0f3c6f9eab1bf0c4";
-            
-            // La URL final de la lista
-            const urlLista = "https://appsstudios-oficial.github.io/Buscador/lista1";
-            
-            const boton = document.getElementById('miBoton');
+    function generarAcceso() {
+        const publicidad = "https://www.effectivegatecpm.com/vqawq29zk?key=af2c03441e06190b0f3c6f9eab1bf0c4";
+        const urlLista = "https://appsstudios-oficial.github.io/Buscador/lista1";
+        
+        // 1. ABRIR EL ANUNCIO EN OTRA PESTAÑA
+        // Esto asegura que Adsterra registre la visita y vos ganes dinero
+        window.open(publicidad, '_blank');
 
-            // 1. ABRIMOS LA PUBLICIDAD EN UNA PESTAÑA NUEVA
-            // El navegador la abre arriba, pero la pestaña original sigue viva abajo
-            window.open(publicidad, '_blank');
-
-            // 2. CAMBIAMOS LA PESTAÑA ACTUAL A LA LISTA INMEDIATAMENTE
-            // Así, cuando el usuario cierre el anuncio o vuelva atrás, ya está en la lista1
-            setTimeout(() => {
-                window.location.href = urlLista;
-            }, 500); // 500ms es suficiente para que el anuncio se dispare
-        }
-    </script>
+        // 2. REDIRIGIR LA PÁGINA ACTUAL AL INSTANTE
+        // Cambiamos la pestaña que el usuario está viendo directamente a la lista
+        // Sin esperas, para que no sienta que quedó atrapado
+        window.location.replace(urlLista);
+    }
+</script>
 </body>
 </html>
+
 
