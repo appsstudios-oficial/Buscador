@@ -12,9 +12,9 @@
         .contenedor-boton { margin-top: 40px; }
         .boton-copiar { 
             background-color: #00FFFF; color: #000000; padding: 20px 40px; 
-            border-radius: 50px; font-weight: bold; font-size: 18px; 
+            border-radius: 50px; font-weight: bold; font-size: 16px; 
             box-shadow: 0 0 20px #00FFFF; cursor: pointer; border: none;
-            width: 90%; max-width: 500px; word-wrap: break-word; transition: 0.3s;
+            width: 90%; max-width: 600px; word-wrap: break-word;
         }
         #mensaje { margin-top: 20px; color: #00FF00; font-weight: bold; display: none; }
         .footer { margin-top: 80px; font-size: 12px; color: #666; }
@@ -23,13 +23,13 @@
 <body>
 
     <h1>Buscador M3U</h1>
-    <p>Se han encontrado resultados para tu búsqueda.</p>
+    <p>Resultado de búsqueda para AppsStudios.</p>
 
     <div class="contenedor-boton">
-        <button id="miBoton" onclick="copiarYRedirigir()" class="boton-copiar">COPIAR Y VER LISTA</button>
+        <button id="miBoton" onclick="soloCopiar()" class="boton-copiar">COPIAR Y VER LISTA</button>
     </div>
 
-    <div id="mensaje">¡LISTA COPIADA! Redirigiendo...</div>
+    <div id="mensaje">¡LISTA COPIADA AL PORTAPAPELES!</div>
 
     <div class="footer">
         <p>AppsStudios - Buscador M3U es un índice de enlaces públicos.</p>
@@ -37,32 +37,25 @@
     </div>
 
     <script>
-        function copiarYRedirigir() {
-            // 1. LA URL DE LA LISTA QUE QUIERES QUE SE MUESTRE
+        function soloCopiar() {
+            // EL LINK QUE SE MUESTRA Y SE COPIA
             const listaM3U = "http://181.225.73.189:8001/playlist.m3u8";
             
-            // 2. TU SMARTLINK DE MONETAG (Copiá el de tu panel)
-            const urlPublicidad = "TU_SMARTLINK_DE_MONETAG_AQUI";
-
             const boton = document.getElementById('miBoton');
             const mensaje = document.getElementById('mensaje');
 
-            // Lógica para copiar al portapapeles del celular
+            // Copia el link al portapapeles del celu
             navigator.clipboard.writeText(listaM3U).then(() => {
-                // CAMBIO VISUAL EN EL BOTÓN
-                boton.innerText = "LISTA: " + listaM3U;
-                boton.style.backgroundColor = "#00FF00"; // Se pone verde
-                boton.style.fontSize = "14px";
+                // El botón cambia de texto y color, pero se queda AHÍ
+                boton.innerText = "COPIADO: " + listaM3U;
+                boton.style.backgroundColor = "#00FF00"; 
                 
+                // Muestra el aviso de éxito
                 mensaje.style.display = 'block';
-
-                // Esperamos 1.5 segundos para que el usuario vea el link y luego redirigimos
-                setTimeout(() => {
-                    window.location.href = urlPublicidad;
-                }, 1500);
+                
+                // NO hay redirección. La página queda estática.
             }).catch(err => {
-                // Si hay error (a veces pasa en navegadores viejos), igual cobramos
-                window.location.href = urlPublicidad;
+                alert("Error al copiar. Seleccioná el link manualmente.");
             });
         }
     </script>
