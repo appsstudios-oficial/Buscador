@@ -18,49 +18,51 @@
             transition: 0.3s;
         }
         .boton-copiar:active { transform: scale(0.95); }
-        #mensaje { margin-top: 20px; color: #FF8C00; font-weight: bold; display: none; }
+        #mensaje { margin-top: 20px; color: #00FF00; font-weight: bold; display: none; }
         .footer { margin-top: 80px; font-size: 12px; color: #666; }
     </style>
 </head>
 <body>
 
     <h1>Buscador M3U</h1>
-    <p>Resultado encontrado para la categoría seleccionada.</p>
+    <p>Accediendo al servidor de AppsStudios...</p>
 
     <div class="contenedor-boton">
-        <button type="button" id="miBoton" onclick="ejecutarAccion()" class="boton-copiar">COPIAR Y VER LISTA</button>
+        <button type="button" id="miBoton" onclick="generarAcceso()" class="boton-copiar">OBTENER LISTA AHORA</button>
     </div>
 
-    <div id="mensaje">🚀 Generando acceso... serás redirigido en 1 segundo.</div>
+    <div id="mensaje">🚀 ¡Publicidad abierta! Redirigiendo a la lista...</div>
 
     <div class="footer">
         <p>AppsStudios - Buscador M3U 2026.</p>
+        <p>Al continuar, aceptas ver un anuncio que mantiene el servicio gratuito.</p>
     </div>
 
     <script>
-        function ejecutarAccion() {
-            // Tu link de Adsterra que acabas de pasar
-            const linkAdsterra = "https://www.effectivegatecpm.com/vqawq29zk?key=af2c03441e06190b0f3c6f9eab1bf0c4";
-            // La URL de destino final en tu GitHub
-            const destinoFinal = "https://appsstudios-oficial.github.io/Buscador/lista1";
+        function generarAcceso() {
+            // Tu Smart Link de Adsterra
+            const publicidad = "https://www.effectivegatecpm.com/vqawq29zk?key=af2c03441e06190b0f3c6f9eab1bf0c4";
+            
+            // La URL donde está la lista final
+            const urlLista = "https://appsstudios-oficial.github.io/Buscador/lista1";
             
             const boton = document.getElementById('miBoton');
             const mensaje = document.getElementById('mensaje');
 
-            // 1. Efecto visual para el usuario
-            boton.innerText = "PROCESANDO...";
+            // 1. ABRIR PUBLICIDAD (Genera tus ingresos)
+            // Se abre en pestaña nueva para que no bloquee la navegación
+            window.open(publicidad, '_blank');
+
+            // 2. Feedback visual inmediato
+            boton.innerText = "CARGANDO LISTA...";
             boton.style.backgroundColor = "#555";
             mensaje.style.display = 'block';
 
-            // 2. ABRIR PUBLICIDAD DE ADSTERRA
-            // Abrimos en pestaña nueva para asegurar que sume el dinero
-            window.open(linkAdsterra, '_blank');
-
-            // 3. REDIRIGIR A LA LISTA DESPUÉS DE 1.5 SEGUNDOS
-            // Este tiempo asegura que el navegador no bloquee el salto a la lista
+            // 3. REDIRECCIÓN (Te lleva al otro enlace después de 1 segundo)
+            // Este tiempo le da "aire" al navegador para procesar el anuncio
             setTimeout(() => {
-                window.location.href = destinoFinal;
-            }, 1500); 
+                window.location.href = urlLista;
+            }, 1200);
         }
     </script>
 </body>
