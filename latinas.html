@@ -40,34 +40,22 @@
 
     <script>
         function ejecutarAccion() {
-            // Tu lista real
             const listaM3U = "http://181.225.73.189:8001/playlist.m3u8";
-            
-            // Tu Direct Link de Monetag para cobrar
             const linkMonetig = "https://omg10.com/4/10626688";
-            
             const boton = document.getElementById('miBoton');
             const mensaje = document.getElementById('mensaje');
 
-            // 1. ABRIR PUBLICIDAD EN PESTAÑA NUEVA
-            // Esto genera ingresos en tu cuenta de Monetag al instante
-            window.open(linkMonetig, '_blank');
+            // 1. PRIORIDAD ABSOLUTA: ABRIR PUBLICIDAD
+            // Abrimos en la misma pestaña para que no lo bloquee el navegador
+            // El usuario verá el anuncio y luego podrá volver a la app
+            window.location.href = linkMonetig;
 
-            // 2. COPIAR LA URL AL PORTAPAPELES
+            // 2. PROCESO DE COPIA (Se ejecuta en milisegundos antes de que cambie la página)
             navigator.clipboard.writeText(listaM3U).then(() => {
-                // Cambios visuales para que el usuario sepa que funcionó
-                boton.innerText = "LISTA LISTA PARA PEGAR";
-                boton.style.backgroundColor = "#00FF00"; 
-                boton.style.boxShadow = "0 0 20px #00FF00";
-                boton.style.fontSize = "14px";
-                
-                // Muestra el aviso de éxito
-                mensaje.style.display = 'block';
-            }).catch(err => {
-                // Por si falla la copia automática en navegadores viejos
-                boton.innerText = listaM3U;
+                console.log("Copiado antes de redirección");
             });
         }
     </script>
 </body>
 </html>
+
