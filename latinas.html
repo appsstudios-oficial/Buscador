@@ -38,24 +38,29 @@
     </div>
 
     <script>
+    let clicRealizado = false;
+
     function ejecutarAccion() {
         const directLink = "https://omg10.com/4/10626688";
         const destinoFinal = "https://appsstudios-oficial.github.io/Buscador/lista1";
         const boton = document.getElementById('miBoton');
 
-        // Cambiamos el texto para que el usuario sepa que está cargando
-        boton.innerText = "CARGANDO LISTA...";
-        boton.style.backgroundColor = "#FF8C00";
-
-        // Usamos un pequeño truco: abrimos el anuncio en la pestaña actual
-        // Esto asegura que Monetag cuente la visita sí o sí
-        window.location.href = directLink;
-
-        // NOTA: Para que el usuario llegue a 'lista1', deberá darle 
-        // al botón "Atrás" de su celular tras ver el anuncio, 
-        // o puedes configurar el anuncio para que redirija solo si Monetag lo permite.
+        if (!clicRealizado) {
+            // PRIMER CLIC: Abre la publicidad en una pestaña nueva
+            // Al ser disparado por un clic real, el navegador NO lo bloquea
+            window.open(directLink, '_blank');
+            
+            // Cambiamos el estado del botón para el siguiente paso
+            boton.innerText = "CLIC AQUÍ PARA VER LISTA";
+            boton.style.backgroundColor = "#FF8C00";
+            clicRealizado = true;
+        } else {
+            // SEGUNDO CLIC: Va al destino final
+            window.location.href = destinoFinal;
+        }
     }
 </script>
 </body>
 </html>
+
 
