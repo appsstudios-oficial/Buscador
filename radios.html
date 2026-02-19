@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador M3U - AppsStudios</title>
+    
+    <style>
+        body { background-color: #000000; color: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; padding: 20px; }
+        h1 { color: #FF8C00; text-shadow: 0 0 10px #FF8C00; margin-top: 50px; }
+        p { color: #cccccc; font-size: 18px; }
+        .contenedor-boton { margin-top: 40px; }
+        .boton-copiar { 
+            background-color: #00FFFF; color: #000000; padding: 20px 40px; 
+            border-radius: 50px; font-weight: bold; text-decoration: none; 
+            display: inline-block; font-size: 20px; box-shadow: 0 0 20px #00FFFF;
+            transition: 0.3s; cursor: pointer; border: none;
+        }
+        .boton-copiar:active { transform: scale(0.95); }
+        #mensaje { margin-top: 20px; color: #00FF00; font-weight: bold; display: none; }
+        .footer { margin-top: 80px; font-size: 12px; color: #666; }
+    </style>
+</head>
+<body>
+
+    <h1>Buscador M3U</h1>
+    <p>Se han encontrado resultados para tu búsqueda.</p>
+
+    <div class="contenedor-boton">
+        <button onclick="copiarYRedirigir()" class="boton-copiar">COPIAR Y VER LISTA</button>
+    </div>
+
+    <div id="mensaje">¡LISTA COPIADA! Abriendo contenido...</div>
+
+    <div class="footer">
+        <p>AppsStudios - Buscador M3U es un índice de enlaces públicos.</p>
+        <p>No almacenamos contenido en nuestros servidores. 2026.</p>
+    </div>
+
+    <script>
+        function copiarYRedirigir() {
+            // 1. EL LINK QUE SE VA A COPIAR (Tu lista .m3u8)
+            const textoACopiar = "TU_URL_DE_LA_LISTA_AQUI.m3u8";
+            
+            // 2. TU SMARTLINK DE MONETAG (Donde vas a cobrar)
+            const urlPublicidad = "TU_SMARTLINK_DE_MONETAG_AQUI";
+
+            // Lógica para copiar al portapapeles
+            navigator.clipboard.writeText(textoACopiar).then(() => {
+                // Mostrar mensaje de éxito
+                document.getElementById('mensaje').style.display = 'block';
+                
+                // Esperar 1 segundo y abrir la publicidad
+                setTimeout(() => {
+                    window.location.href = urlPublicidad;
+                }, 1000);
+            });
+        }
+    </script>
+
+</body>
+</html>
