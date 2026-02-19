@@ -1,36 +1,66 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador M3U - AppsStudios</title>
+    
     <style>
-        .pasos { display: none; margin-top: 20px; border: 1px solid #FF8C00; padding: 15px; border-radius: 10px; }
-        .boton-publicidad { background-color: #FF8C00; color: white; padding: 15px; display: block; text-decoration: none; border-radius: 10px; font-weight: bold; margin-bottom: 15px; }
-        .boton-lista { background-color: #00FF00; color: black; padding: 15px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; width: 100%; display: none; }
+        body { background-color: #000000; color: #ffffff; font-family: 'Segoe UI', sans-serif; text-align: center; padding: 20px; }
+        h1 { color: #FF8C00; text-shadow: 0 0 10px #FF8C00; margin-top: 50px; }
+        p { color: #cccccc; font-size: 18px; }
+        .contenedor-boton { margin-top: 40px; }
+        .boton-copiar { 
+            background-color: #00FFFF; color: #000000; padding: 20px 40px; 
+            border-radius: 50px; font-weight: bold; font-size: 16px; 
+            box-shadow: 0 0 20px #00FFFF; cursor: pointer; border: none;
+            width: 95%; max-width: 600px; word-wrap: break-word;
+            transition: 0.3s;
+        }
+        .boton-copiar:active { transform: scale(0.95); }
+        #mensaje { margin-top: 20px; color: #FF8C00; font-weight: bold; display: none; }
+        .footer { margin-top: 80px; font-size: 12px; color: #666; }
     </style>
 </head>
 <body>
 
     <h1>Buscador M3U</h1>
-    
-    <div class="contenedor-boton">
-        <a href="https://omg10.com/4/10626688" target="_blank" onclick="mostrarBotonFinal()" class="boton-publicidad">
-            1. CLIC AQUÍ PARA DESBLOQUEAR LISTA
-        </a>
+    <p>Resultado encontrado para la categoría seleccionada.</p>
 
-        <button id="btnFinal" onclick="irALista()" class="boton-lista">
-            2. ¡LISTO! VER CONTENIDO
-        </button>
+    <div class="contenedor-boton">
+        <button type="button" id="miBoton" onclick="ejecutarAccion()" class="boton-copiar">COPIAR Y VER LISTA</button>
+    </div>
+
+    <div id="mensaje">🚀 Generando acceso... serás redirigido en 1 segundo.</div>
+
+    <div class="footer">
+        <p>AppsStudios - Buscador M3U 2026.</p>
     </div>
 
     <script>
-        function mostrarBotonFinal() {
-            // Cuando toca el anuncio, se habilita el botón real de la lista
-            setTimeout(() => {
-                document.getElementById('btnFinal').style.display = 'block';
-            }, 1000); // Esperamos 1 segundo para que se abra el anuncio
-        }
+        function ejecutarAccion() {
+            // Tu link de Adsterra que acabas de pasar
+            const linkAdsterra = "https://www.effectivegatecpm.com/vqawq29zk?key=af2c03441e06190b0f3c6f9eab1bf0c4";
+            // La URL de destino final en tu GitHub
+            const destinoFinal = "https://appsstudios-oficial.github.io/Buscador/lista1";
+            
+            const boton = document.getElementById('miBoton');
+            const mensaje = document.getElementById('mensaje');
 
-        function irALista() {
-            window.location.href = "https://appsstudios-oficial.github.io/Buscador/lista1";
+            // 1. Efecto visual para el usuario
+            boton.innerText = "PROCESANDO...";
+            boton.style.backgroundColor = "#555";
+            mensaje.style.display = 'block';
+
+            // 2. ABRIR PUBLICIDAD DE ADSTERRA
+            // Abrimos en pestaña nueva para asegurar que sume el dinero
+            window.open(linkAdsterra, '_blank');
+
+            // 3. REDIRIGIR A LA LISTA DESPUÉS DE 1.5 SEGUNDOS
+            // Este tiempo asegura que el navegador no bloquee el salto a la lista
+            setTimeout(() => {
+                window.location.href = destinoFinal;
+            }, 1500); 
         }
     </script>
 </body>
