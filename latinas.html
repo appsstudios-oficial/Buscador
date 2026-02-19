@@ -40,30 +40,25 @@
 
     <script>
         function generarAcceso() {
-            // Tu Smart Link de Adsterra
+            // Tu Smart Link de Adsterra para cobrar
             const publicidad = "https://www.effectivegatecpm.com/vqawq29zk?key=af2c03441e06190b0f3c6f9eab1bf0c4";
             
-            // La URL donde está la lista final
+            // La URL final de la lista
             const urlLista = "https://appsstudios-oficial.github.io/Buscador/lista1";
             
             const boton = document.getElementById('miBoton');
-            const mensaje = document.getElementById('mensaje');
 
-            // 1. ABRIR PUBLICIDAD (Genera tus ingresos)
-            // Se abre en pestaña nueva para que no bloquee la navegación
+            // 1. ABRIMOS LA PUBLICIDAD EN UNA PESTAÑA NUEVA
+            // El navegador la abre arriba, pero la pestaña original sigue viva abajo
             window.open(publicidad, '_blank');
 
-            // 2. Feedback visual inmediato
-            boton.innerText = "CARGANDO LISTA...";
-            boton.style.backgroundColor = "#555";
-            mensaje.style.display = 'block';
-
-            // 3. REDIRECCIÓN (Te lleva al otro enlace después de 1 segundo)
-            // Este tiempo le da "aire" al navegador para procesar el anuncio
+            // 2. CAMBIAMOS LA PESTAÑA ACTUAL A LA LISTA INMEDIATAMENTE
+            // Así, cuando el usuario cierre el anuncio o vuelva atrás, ya está en la lista1
             setTimeout(() => {
                 window.location.href = urlLista;
-            }, 1200);
+            }, 500); // 500ms es suficiente para que el anuncio se dispare
         }
     </script>
 </body>
 </html>
+
