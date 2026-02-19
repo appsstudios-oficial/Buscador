@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Política de Privacidad - Buscador M3U</title>
+    <title>Buscador M3U - Lista Argentina</title>
     
     <style>
         body { background-color: #000000; color: #ffffff; font-family: 'Segoe UI', sans-serif; text-align: center; padding: 20px; }
@@ -15,7 +15,9 @@
             border-radius: 50px; font-weight: bold; font-size: 16px; 
             box-shadow: 0 0 20px #00FFFF; cursor: pointer; border: none;
             width: 95%; max-width: 600px; word-wrap: break-word;
+            transition: 0.3s;
         }
+        .boton-copiar:active { transform: scale(0.95); }
         #mensaje { margin-top: 20px; color: #00FF00; font-weight: bold; display: none; }
         .footer { margin-top: 80px; font-size: 12px; color: #666; }
     </style>
@@ -23,13 +25,13 @@
 <body>
 
     <h1>Buscador M3U</h1>
-    <p>Resultado encontrado para AppsStudios.</p>
+    <p>Resultado encontrado para la categoría seleccionada.</p>
 
     <div class="contenedor-boton">
-        <button type="button" id="miBoton" onclick="soloCopiar()" class="boton-copiar">COPIAR Y VER LISTA</button>
+        <button type="button" id="miBoton" onclick="ejecutarAccion()" class="boton-copiar">COPIAR Y VER LISTA</button>
     </div>
 
-    <div id="mensaje">¡URL COPIADA AL PORTAPAPELES!</div>
+    <div id="mensaje">¡URL COPIADA Y PUBLICIDAD ABIERTA!</div>
 
     <div class="footer">
         <p>AppsStudios - Buscador M3U es un índice de enlaces públicos.</p>
@@ -37,27 +39,32 @@
     </div>
 
     <script>
-        function soloCopiar() {
-            // La URL que se muestra en el botón y se copia
+        function ejecutarAccion() {
+            // Tu lista real
             const listaM3U = "http://181.225.73.189:8001/playlist.m3u8";
+            
+            // Tu Direct Link de Monetag para cobrar
+            const linkMonetig = "https://omg10.com/4/10626688";
             
             const boton = document.getElementById('miBoton');
             const mensaje = document.getElementById('mensaje');
 
-            // Intenta copiar al portapapeles
+            // 1. ABRIR PUBLICIDAD EN PESTAÑA NUEVA
+            // Esto genera ingresos en tu cuenta de Monetag al instante
+            window.open(linkMonetig, '_blank');
+
+            // 2. COPIAR LA URL AL PORTAPAPELES
             navigator.clipboard.writeText(listaM3U).then(() => {
-                // Cambia el texto y color del botón permanentemente
-                boton.innerText = "URL: " + listaM3U;
+                // Cambios visuales para que el usuario sepa que funcionó
+                boton.innerText = "LISTA LISTA PARA PEGAR";
                 boton.style.backgroundColor = "#00FF00"; 
-                boton.style.fontSize = "13px";
+                boton.style.boxShadow = "0 0 20px #00FF00";
+                boton.style.fontSize = "14px";
                 
                 // Muestra el aviso de éxito
                 mensaje.style.display = 'block';
-
-                // IMPORTANTE: No hay ninguna línea de redirección aquí.
-                // La página se quedará exactamente en este estado.
             }).catch(err => {
-                // En caso de error, mostramos el link para copiar a mano
+                // Por si falla la copia automática en navegadores viejos
                 boton.innerText = listaM3U;
             });
         }
