@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista IPTV - Copiar</title>
+    <title>Copiar Lista</title>
     <style>
-        /* Fondo negro y centrado */
+        /* Fondo negro y alineación central */
         body {
             background-color: #000000;
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -19,25 +20,34 @@
 
         /* Estilo del botón */
         #btnCopiar {
-            background-color: #ff4757; /* Un rojo vibrante */
+            background-color: #27ae60; /* Verde para que resalte */
             color: white;
             border: none;
-            padding: 20px 40px;
-            font-size: 20px;
+            padding: 15px 35px;
+            font-size: 1.2rem;
             font-weight: bold;
-            border-radius: 50px;
+            border-radius: 8px;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
-            transition: transform 0.2s, background-color 0.2s;
+            transition: background 0.3s ease;
+            margin-bottom: 20px;
         }
 
         #btnCopiar:hover {
-            background-color: #ff6b81;
-            transform: scale(1.05);
+            background-color: #2ecc71;
         }
 
-        #btnCopiar:active {
-            transform: scale(0.95);
+        /* Contenedor del enlace (oculto al inicio) */
+        #contenedorEnlace {
+            display: none; /* Se oculta por defecto */
+            background-color: #1a1a1a;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px border #333;
+            word-break: break-all; /* Para que el link no se corte en móviles */
+            color: #00ff00; /* Color verde tipo consola */
+            font-family: monospace;
+            max-width: 80%;
+            text-align: center;
         }
     </style>
 </head>
@@ -45,20 +55,29 @@
 
     <button id="btnCopiar">COPIAR LISTA</button>
 
+    <div id="contenedorEnlace"></div>
+
     <script>
         const urlLista = "http://190.108.89.228:8000/playlist.m3u8";
+        const boton = document.getElementById('btnCopiar');
+        const visor = document.getElementById('contenedorEnlace');
 
-        document.getElementById('btnCopiar').addEventListener('click', function() {
-            // Copiar el enlace al portapapeles
+        boton.addEventListener('click', function() {
+            // 1. Copiar al portapapeles
             navigator.clipboard.writeText(urlLista).then(() => {
-                console.log("Copiado con éxito");
                 
-                // Abrir el enlace en una pestaña nueva inmediatamente
-                window.open(urlLista, '_blank');
+                // 2. Mostrar el enlace en la pantalla
+                visor.textContent = urlLista;
+                visor.style.display = "block";
+                
+                // Opcional: Cambiar el texto del botón temporalmente
+                boton.textContent = "¡COPIADO!";
+                setTimeout(() => {
+                    boton.textContent = "COPIAR LISTA";
+                }, 2000);
+
             }).catch(err => {
-                // Si falla el portapapeles, intentamos abrir el enlace de todos modos
-                window.open(urlLista, '_blank');
-                console.error('Error al intentar copiar: ', err);
+                console.error('Error al copiar: ', err);
             });
         });
     </script>
