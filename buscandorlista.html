@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso a Lista</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1a1c2c 0%, #4a192c 100%);
+            font-family: sans-serif;
+            color: white;
+            text-align: center;
+        }
+
+        .contenedor {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            width: 80%;
+            max-width: 500px;
+        }
+
+        #contador {
+            font-size: 5rem;
+            display: block;
+            margin: 20px 0;
+            color: #ff758c;
+        }
+
+        .enlace {
+            display: block;
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff;
+            color: #333;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+            word-break: break-all;
+        }
+
+        .enlace:active {
+            transform: scale(0.95);
+            background: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contenedor">
+        <div id="pantalla">
+            <p>Generando acceso en...</p>
+            <span id="contador">5</span>
+        </div>
+
+        <div id="contenido" style="display:none;">
+            <h2>Toca el enlace para copiar:</h2>
+            <div class="enlace" id="url-lista" onclick="copiarAlPortapapeles()">
+https://two026listas.onrender.com/lista.m3u            
+            </div>
+            <p id="mensaje-feedback" style="margin-top:15px; font-size: 0.9rem; color: #ff758c; opacity: 0; transition: opacity 0.3s;">¡Copiado al portapapeles!</p>
+        </div>
+    </div>
+
+    <script>
+        var seg = 5;
+        var elContador = document.getElementById('contador');
+        
+        var intervalo = setInterval(function() {
+            seg--;
+            elContador.innerHTML = seg;
+            if (seg <= 0) {
+                clearInterval(intervalo);
+                document.getElementById('pantalla').style.display = 'none';
+                document.getElementById('contenido').style.display = 'block';
+            }
+        }, 1000);
+
+        function copiarAlPortapapeles() {
+            var texto = document.getElementById("url-lista").innerText;
+            navigator.clipboard.writeText(texto).then(function() {
+                var feedback = document.getElementById("mensaje-feedback");
+                feedback.style.opacity = "1";
+                setTimeout(function() { feedback.style.opacity = "0"; }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
